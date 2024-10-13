@@ -1,0 +1,233 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  background-color: #00171f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  gap:2rem;
+  font-family: inherit;
+}
+
+a{
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 1.5rem 3rem;
+  position: relative;
+}
+
+.btn1{
+  border: 2px solid #fff;
+  /* Hides any overflow so the slide-in effect works smoothly. */
+  overflow: hidden;
+}
+
+.btn1::before{
+  content: "DOWNLOAD";
+  font-weight: 500;
+  position: absolute;
+  color: #000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s;
+  background-color: #fff;
+  /* Initially, it's positioned outside the button's top */
+  transform: translateY(-100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn1:hover::before{
+  /* When hovered, the pseudo-element slides down into view */
+  transform: translateY(0);
+}
+
+.btn2{
+  background-color: #eb5e28;
+  position: relative;
+}
+
+.btn2::before{
+  content: 'button';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00a8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*  Initially, it is rotated 270 degrees along the X-axis, making it invisible. */
+  transform: rotateX(270deg);
+  transform-origin: top;
+  transition: all 1s;
+}
+
+.btn2::after{
+  content: 'button';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #38b000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateX(270deg);
+  transform-origin: top;
+  transition: all 1s;
+  transition-delay: 0.3s;
+}
+
+/* On hover, both pseudo-elements rotate to 0 degrees, flipping into view with a 3D effect */
+.btn2:hover::before,
+.btn2:hover::after{
+  transform: rotateX(0);
+}
+
+.btn3{
+  /* The button has no background color by default */
+  background: transparent;
+  line-height: 60px;
+  font-weight: 600;
+  /* Adds a smooth transition for any changes in the button's style when hovered. */
+  transition: all 0.2s;
+  color: #fdfcdc;
+}
+
+.btn3::before{
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 100%;
+  height: 100%;
+  background-color: #9d4edd;
+  /* Places these layers behind the button text so they don't overlap it. */
+  z-index: -1;
+  transition: all 0.2s;
+  transform-origin: top;
+}
+
+.btn3::after{
+  content: '';
+  position: absolute;
+  /* Positions this layer slightly outside the button border, giving it a slight "shadow" effect. */
+  top: 3px;
+  left: 3px;
+  width: 100%;
+  height: 100%;
+  /* Sets the background color of this layer to a red shade. */
+  background-color: #c32f27;
+  z-index: -1;
+  /* Blends this layer with the underlying content, creating a more dynamic effect. */
+  /* mix-blend-mode: multiply; */
+  transition: all 0.2s;
+  /* Sets the point around which this layer rotates to be the bottom edge. */
+  transform-origin: bottom;
+}
+
+.btn3:hover::before{
+  top:-6px;
+  left: 0;
+  /* Rotates the layer along the X-axis, creating a 3D tilt effect. The perspective(1000px) ensures that the rotation has a realistic depth effect. */
+  transform: perspective(1000px) rotateX(75deg);
+}
+
+.btn3:hover::after{
+  top:6px;
+  left: 0;
+  transform: perspective(1000px) rotateX(-75deg);
+}
+
+.btn3:hover{
+  color: #fff;
+}
+
+.btn4{
+  background-color: #1144eb;
+  cursor: pointer;
+}
+
+.btn4::before{
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: -10px;
+  left: -10px;
+  border-top: 4px solid #ffd500;
+  border-left: 4px solid #ffd500;
+  transition: all 0.25s;
+}
+
+/* apply the specified styles to both the ::before and ::after pseudo-elements of .btn4 when it is hovered. */
+.btn4:hover::before,
+.btn4:hover::after{
+  height: 91px;
+  width: 203px;
+}
+
+.btn4::after{
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  bottom: -10px;
+  right: -10px;
+  /* background-color: #ffd500; */
+  border-bottom: 4px solid #ffd500;
+  border-right: 4px solid #ffd500;
+  transition: all 0.25s;
+}
+
+.btn5{
+  background-color: #fff;
+  color: #000;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+}
+
+.btn5::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 100px;
+  transition: all 1s;
+  z-index: -1;
+}
+
+.btn5:hover::before{
+  /* Enlarges and fades the pseudo-element */
+  transform: scaleX(1.2) scaleY(1.4);
+  /* Fade out effect */
+  opacity: 0;
+}
+
+.btn5:active{
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
